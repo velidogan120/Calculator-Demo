@@ -66,7 +66,7 @@
                                 <div class="col-10 mx-auto">0</div>
                             </div>
                             <div class="row flex-column col-2 process w-auto gy-1 align-items-center">
-                                <div class="col special" id="multiply"><i class="fa-solid fa-xmark fa-2x"></i></div>
+                                <div class="col special" id="multiply"><i class="fa-solid fa-xmark fa-2x ms-auto"></i></div>
                                 <div class="col" id="divide"><i class="fa-solid fa-divide fa-2x"></i></div>
                                 <div class="col" id="plus"><i class="fa-solid fa-plus fa-2x"></i></div>
                                 <div class="col" id="minus"><i class="fa-solid fa-minus fa-2x"></i></div>
@@ -75,7 +75,7 @@
                     </div>
                     <div class="card-footer">
                         <div class="card-title">Sonuç</div>
-                        <div id="response">
+                        <div id="response" class="d-inline-block display-5">
 
                         </div>
                     </div>
@@ -94,6 +94,7 @@
         let response = document.querySelector("#response")
         let response2 = 0;
 
+
         for(let number of numbers){
             number.addEventListener("click",function(){
                 let value = numberInput.value;
@@ -108,7 +109,10 @@
                     numberInput.value = "";
                 }
                 document.querySelector("div.special").classList.remove("special");
-                pro.classList.add("special"); 
+                pro.classList.add("special");
+                if(pro.classList.contains("special")){
+                    response.insertAdjacentHTML("afterend",pro.innerHTML)
+                }
             })           
         }
 
@@ -127,7 +131,8 @@
             }else if(document.querySelector("#minus").classList.contains("special")){
                 response.innerHTML = value - Number(numberInput.value);
             }        
-            numberInput.value = "";    
+            numberInput.value = "";
+            document.querySelector(".card-footer > *:last-child").remove();
         })
 
         clear.addEventListener("click",function(){
