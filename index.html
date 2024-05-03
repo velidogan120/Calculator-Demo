@@ -92,7 +92,6 @@
         const equal = document.querySelector("#equal")
         const clear = document.querySelector("#clear")
         let response = document.querySelector("#response")
-        let response2 = 0;
 
 
         for(let number of numbers){
@@ -109,7 +108,10 @@
                     numberInput.value = "";
                 }
                 document.querySelector("div.special").classList.remove("special");
-                pro.classList.add("special");
+                pro.classList.add("special"); 
+                if(document.querySelector(".card-footer > i")){
+                    document.querySelector(".card-footer > *:last-child").remove();
+                }              
                 if(pro.classList.contains("special")){
                     response.insertAdjacentHTML("afterend",pro.innerHTML)
                 }
